@@ -1,0 +1,55 @@
+/* Presentacion de secciones ampliadas a pantalla completa. */
+.section-expanded {
+	position: fixed !important;
+	inset: 0 !important;
+	z-index: 20;
+	width: auto !important;
+	height: 100vh !important;
+	height: 100dvh !important;
+	margin: 0 !important;
+	padding-top: max(88px, calc(env(safe-area-inset-top) + 76px)) !important;
+	padding-bottom: max(32px, env(safe-area-inset-bottom)) !important;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+	transform-origin: center;
+}
+
+.section-expanded.walk { background: var(--paper); }
+
+/* Boton para cerrar una seccion ampliada. */
+.section-close {
+	position: fixed;
+	z-index: 21;
+	top: max(16px, env(safe-area-inset-top));
+	right: max(16px, env(safe-area-inset-right));
+	min-width: 46px;
+	min-height: 46px;
+	padding: 0 15px;
+	border: 1px solid rgb(255 255 255 / 55%);
+	background: var(--ink);
+	color: white;
+	font: 600 14px var(--sans);
+	cursor: pointer;
+	box-shadow: 0 5px 24px rgb(0 0 0 / 18%);
+	animation: close-enter .3s .32s both;
+}
+
+.section-close:hover { background: var(--sea); }
+.section-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* Entrada del boton de cierre y ajustes para usuarios que reducen movimiento. */
+@keyframes close-enter {
+	from { opacity: 0; transform: translateY(-8px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
