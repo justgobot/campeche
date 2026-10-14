@@ -1,3 +1,790 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre las murallas, baluartes, fuertes y catedrales de San Francisco de Campeche, la única ciudad amurallada de México y Patrimonio Mundial.">
+    <meta name="keywords" content="Campeche amurallado, baluartes Campeche, fuerte San Miguel, que ver en Campeche, monumentos históricos Campeche, centro histórico UNESCO">
+    <meta name="theme-color" content="#edf1e7">
+    <title>Monumentos Históricos de Campeche | La ciudad amurallada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="jessc.css">
+    <style>
+        /* Colores y tipografias que se reutilizan en toda la pagina. */
+        :root {
+            --ink: #382920;
+            --muted: #75665b;
+            --paper: #f4efe8;
+            --white: #fbf8f3;
+            --sea: #4b342a;
+            --sea-light: #e8ddd2;
+            --coral: #a87a4e;
+            --gold: #dcc7b8;
+            --line: #d8c9bb;
+            --terracotta: #bc9a80;
+            --sand: #cca090;
+            --stone: #dcc7b8;
+            --display: "Bebas Neue", sans-serif;
+            --sans: "Quicksand", sans-serif;
+        }
+
+        /* Estilos generales, portada y secciones de contenido. */
+        * { box-sizing: border-box; }
+        a, button, input, select, textarea, summary, [role="button"] { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+        a { color: inherit; }
+        .site-header { position: absolute; inset: 0 0 auto; z-index: 2; color: white; }
+        .nav-wrap { width: min(1200px, calc(100% - 56px)); min-height: 82px; margin: auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(255 255 255 / 35%); }
+        .wordmark { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
+        .wordmark-mark { width: 34px; height: 34px; border: 1px solid rgb(255 255 255 / 75%); display: grid; place-items: center; font-family: var(--sans); font-size: 17px; }
+        .main-nav { display: flex; gap: 27px; align-items: center; }
+        .main-nav a { color: white; text-decoration: none; font-size: 12px; font-weight: 600; }
+        .main-nav a:hover { color: var(--gold); }
+        .hero { min-height: 690px; height: min(830px, 90vh); position: relative; display: flex; align-items: flex-end; color: white; background: var(--sea); overflow: hidden; }
+        .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(24 42 32 / 76%), rgb(24 42 32 / 28%) 66%, rgb(24 42 32 / 10%)), linear-gradient(0deg, rgb(24 42 32 / 43%), transparent 62%); }
+        .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+        .hero-content { position: relative; z-index: 1; width: min(1200px, calc(100% - 56px)); margin: 0 auto; padding: 150px 0 84px; animation: reveal .8s ease-out both; }
+        .eyebrow { margin: 0 0 14px; text-transform: uppercase; letter-spacing: 2px; font-size: 11px; font-weight: 700; }
+        .hero .eyebrow { color: var(--gold); }
+        h1, h2, h3, p { margin-top: 0; }
+        h1 { max-width: 790px; margin-bottom: 15px; font: 400 clamp(48px, 7vw, 88px)/1.02 var(--display); }
+        .hero-subtitle { max-width: 590px; margin-bottom: 31px; color: rgb(255 255 255 / 91%); font-size: 18px; }
+        .hero-link { display: inline-flex; gap: 11px; align-items: center; padding-bottom: 5px; border-bottom: 1px solid var(--gold); color: white; font-weight: 600; text-decoration: none; font-size: 13px; }
+        .hero-link span { color: var(--gold); font-size: 18px; }
+        .intro-band { background: var(--sea); color: white; }
+        .intro-inner { width: min(1200px, calc(100% - 56px)); margin: auto; display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; padding: 35px 0; align-items: center; }
+        .intro-inner p { margin: 0; max-width: 690px; font-size: 15px; }
+        .intro-inner strong { color: white; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .stat { padding-left: 15px; border-left: 1px solid rgb(255 255 255 / 35%); }
+        .stat b { display: block; font: 700 27px/1.15 var(--sans); color: var(--gold); }
+        .stat span { display: block; margin-top: 5px; font-size: 10px; line-height: 1.35; text-transform: uppercase; letter-spacing: .8px; }
+        .section { padding: 94px 0; }
+        .section-inner { width: min(1100px, calc(100% - 56px)); margin: auto; }
+        .section-heading { display: grid; grid-template-columns: 1fr 1.15fr; gap: 50px; align-items: end; margin-bottom: 44px; }
+        .section-heading .eyebrow { color: var(--ink); }
+        h2 { margin-bottom: 0; font: 400 clamp(34px, 4.4vw, 54px)/1.1 var(--display); }
+        .section-heading > p { max-width: 510px; margin-bottom: 3px; color: var(--muted); font-size: 14px; }
+        .defense { background: var(--white); }
+        .defense-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .feature { min-height: 260px; padding: 28px; position: relative; background: var(--sea-light); }
+        .feature:nth-child(2) { background: var(--white); }
+        .feature .number { color: var(--ink); font: 700 14px var(--sans); }
+        .feature h3 { margin: 30px 0 10px; font: 400 28px var(--display); }
+        .feature p { max-width: 480px; color: var(--ink); font-size: 14px; }
+        .tag { display: inline-block; margin-top: 6px; padding: 5px 9px; border: 1px solid rgb(41 59 49 / 22%); font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; }
+        .subhead { margin: 58px 0 20px; font: 400 25px var(--display); }
+        .bastion-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+        .bastion { min-height: 157px; padding: 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .bastion h3 { margin: 0 0 8px; font: 400 18px var(--display); }
+        .bastion p { margin: 0; color: var(--muted); font-size: 12px; }
+        .bastion em { color: var(--ink); font-style: normal; font-weight: 700; }
+        .forts { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 35px; padding: 27px 0; border-top: 2px solid var(--sea); border-bottom: 1px solid var(--line); }
+        .forts h3 { margin: 0 0 7px; font: 400 21px var(--display); }
+        .forts p { margin: 0; color: var(--muted); font-size: 13px; }
+        .year { color: var(--ink); font-weight: 700; }
+        .gallery-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin: 48px 0 20px; }
+        .gallery-heading h3 { margin: 0; font: 400 25px var(--display); }
+        .gallery-heading p { max-width: 470px; margin: 0; color: var(--muted); font-size: 13px; }
+        .bastion-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .bastion-gallery figure { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--white); }
+        .gallery-photo-link { display: block; overflow: hidden; background: var(--sea-light); }
+        .gallery-photo-link img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .35s ease; }
+        .gallery-photo-link:hover img { transform: scale(1.04); }
+        .bastion-gallery figcaption { padding: 13px; }
+        .bastion-gallery figcaption strong { display: block; margin-bottom: 4px; font: 400 18px var(--display); }
+        .bastion-gallery figcaption span { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
+        .gallery-credit { display: inline-block !important; margin-top: 7px; color: var(--ink) !important; font-size: 10px !important; text-underline-offset: 3px; }
+        .religion { background: var(--paper); }
+        .religion-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+        .religion-note { position: sticky; top: 35px; }
+        .religion-note h2 { margin-bottom: 17px; }
+        .religion-note p { color: var(--muted); font-size: 14px; }
+        .religion-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); counter-reset: sites; }
+        .religion-list li { counter-increment: sites; display: grid; grid-template-columns: 42px 1fr; gap: 12px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+        .religion-list li::before { content: "0" counter(sites); color: var(--ink); font: 700 14px var(--sans); }
+        .religion-list strong { display: block; font: 400 17px var(--display); }
+        .religion-list span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+        .walk { padding: 0 0 96px; }
+        .walk-panel { padding: 54px; background: var(--white); }
+        .walk-panel .section-heading { margin-bottom: 28px; }
+        .walk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .walk-item { padding-top: 15px; border-top: 1px solid var(--coral); }
+        .walk-item h3 { margin: 0 0 6px; font: 400 20px var(--display); }
+        .walk-item p { margin: 0; color: var(--muted); font-size: 12px; }
+        footer { padding: 27px 0; background: var(--ink); color: white; }
+        .footer-inner { width: min(1100px, calc(100% - 56px)); margin: auto; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+        footer p { margin: 0; color: rgb(255 255 255 / 75%); font-size: 11px; }
+        footer a { color: var(--gold); font-size: 11px; }
+        @keyframes reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 760px) {
+            .nav-wrap, .hero-content, .intro-inner, .section-inner, .footer-inner { width: min(100% - 36px, 600px); }
+            .nav-wrap { min-height: 68px; align-items: center; }
+            .wordmark { font-size: 10px; letter-spacing: 1px; }
+            .wordmark-mark { width: 29px; height: 29px; }
+            .main-nav { max-width: 58%; gap: 16px; overflow-x: auto; scrollbar-width: none; }
+            .main-nav::-webkit-scrollbar { display: none; }
+            .main-nav a { flex: 0 0 auto; font-size: 11px; }
+            .hero { min-height: 650px; height: 85svh; }
+            .hero-content { padding: 125px 0 58px; }
+            h1 { font-size: clamp(48px, 12vw, 70px); }
+            .hero-subtitle { max-width: 430px; font-size: 16px; }
+            .intro-inner { grid-template-columns: 1fr; gap: 24px; padding: 27px 0; }
+            .stats { gap: 10px; }
+            .stat { padding-left: 10px; }
+            .stat b { font-size: 24px; }
+            .stat span { font-size: 9px; }
+            .section { padding: 68px 0; }
+            .section-heading { grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
+            .defense-grid, .forts, .religion-layout { grid-template-columns: 1fr; }
+            .gallery-heading { display: block; }
+            .gallery-heading p { margin-top: 10px; }
+            .bastion-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+            .feature { min-height: 220px; }
+            .bastion-grid { grid-template-columns: repeat(2, 1fr); }
+            .bastion { min-height: 145px; padding: 15px; }
+            .religion-layout { gap: 28px; }
+            .religion-note { position: static; }
+            .walk { padding-bottom: 65px; }
+            .walk-panel { padding: 29px 22px; }
+            .walk-grid { grid-template-columns: 1fr; gap: 18px; }
+        }
+
+        /* Ajustes visuales y superficies translucidas de la pagina. */
+        body { background: var(--paper); }
+        .site-header {
+            position: relative;
+            background: rgb(244 239 232 / 78%);
+            color: var(--ink);
+            -webkit-backdrop-filter: blur(18px) saturate(1.3);
+            backdrop-filter: blur(18px) saturate(1.3);
+            border-bottom: 1px solid rgb(255 255 255 / 62%);
+            box-shadow: 0 8px 28px rgb(56 41 32 / 7%);
+        }
+        .nav-wrap { border-bottom-color: var(--line); }
+        .wordmark-mark { border-color: var(--coral); color: var(--coral); }
+        .main-nav a { color: var(--ink); }
+        .main-nav a:hover { color: var(--coral); }
+        .hero { height: min(790px, 86vh); min-height: 590px; }
+        .hero::after {
+            background: linear-gradient(90deg, rgb(45 31 24 / 76%), rgb(45 31 24 / 34%) 66%, rgb(45 31 24 / 12%)),
+                linear-gradient(0deg, rgb(45 31 24 / 42%), transparent 62%);
+        }
+        .hero .eyebrow { color: var(--stone); }
+        h1 { max-width: 850px; font-size: 84px; }
+        h2 { font-size: 52px; }
+        .intro-band { background: var(--sea); }
+        .stat b { color: var(--sand); }
+        .defense { background: var(--white); }
+        .feature { border: 1px solid var(--line); background: #eee4da; }
+        .feature:nth-child(2) { background: var(--paper); }
+        .feature h3, .bastion h3, .forts h3, .religion-list strong, .walk-item h3 { color: var(--ink); }
+        .tag { border-color: var(--terracotta); color: var(--ink); }
+        .forts { border-top-color: var(--coral); }
+        .religion { background: var(--paper); }
+        .religion-list { border-top-color: var(--line); }
+        .religion-list li { border-bottom-color: var(--line); }
+        .walk-panel { padding: 24px 0; background: transparent; }
+        .walk-item { border-top-color: var(--coral); }
+        footer { background: var(--sea); }
+        footer a { color: var(--stone); }
+
+        @media (max-width: 760px) {
+            .hero { min-height: 570px; height: 78svh; }
+            h1 { font-size: 58px; }
+            h2 { font-size: 42px; }
+            .hero-content { padding-top: 90px; }
+            .walk-panel { padding: 12px 0; }
+        }
+        @media (max-width: 400px) {
+            h1 { font-size: 52px; }
+            h2 { font-size: 38px; }
+            .bastion-gallery { grid-template-columns: 1fr; }
+        }
+
+        .hero-content { isolation: isolate; padding-left: 22px; padding-right: 22px; }
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            inset: 42px 28% 38px -22px;
+            border: 1px solid rgb(255 255 255 / 36%);
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 18%), rgb(56 41 32 / 34%));
+            -webkit-backdrop-filter: blur(17px) saturate(1.35);
+            backdrop-filter: blur(17px) saturate(1.35);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 38%), 0 18px 48px rgb(24 18 14 / 16%);
+            pointer-events: none;
+        }
+        .hero-content > * { position: relative; z-index: 1; }
+        .hero-link {
+            padding: 9px 14px;
+            border: 1px solid rgb(255 255 255 / 43%);
+            border-radius: 999px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 24%), rgb(255 255 255 / 8%));
+            -webkit-backdrop-filter: blur(13px) saturate(1.4);
+            backdrop-filter: blur(13px) saturate(1.4);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%), 0 8px 24px rgb(0 0 0 / 14%);
+        }
+        .intro-inner { position: relative; isolation: isolate; }
+        .intro-inner::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            inset: 10px -18px;
+            border: 1px solid rgb(255 255 255 / 24%);
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgb(255 255 255 / 13%), rgb(255 255 255 / 4%) 55%, rgb(220 199 184 / 12%));
+            -webkit-backdrop-filter: blur(18px) saturate(1.35);
+            backdrop-filter: blur(18px) saturate(1.35);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 22%), 0 12px 35px rgb(22 17 13 / 12%);
+            pointer-events: none;
+        }
+        .intro-inner > * { position: relative; z-index: 1; }
+        .section-heading {
+            position: relative;
+            padding: 24px;
+            border: 1px solid rgb(255 255 255 / 70%);
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 76%), rgb(255 255 255 / 36%));
+            -webkit-backdrop-filter: blur(16px) saturate(1.25);
+            backdrop-filter: blur(16px) saturate(1.25);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 75%), 0 12px 32px rgb(56 41 32 / 6%);
+        }
+        .feature {
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 82%), rgb(232 221 210 / 48%));
+            -webkit-backdrop-filter: blur(15px) saturate(1.3);
+            backdrop-filter: blur(15px) saturate(1.3);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 78%), 0 12px 32px rgb(56 41 32 / 7%);
+        }
+        .feature:nth-child(2) { background: linear-gradient(145deg, rgb(255 255 255 / 86%), rgb(244 239 232 / 52%)); }
+        .feature .number, .feature h3, .feature p, .feature .tag { position: relative; z-index: 1; }
+        .tag {
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgb(255 255 255 / 68%), rgb(220 199 184 / 27%));
+            -webkit-backdrop-filter: blur(10px) saturate(1.3);
+            backdrop-filter: blur(10px) saturate(1.3);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 78%);
+        }
+        .forts > article {
+            padding: 18px;
+            border: 1px solid rgb(255 255 255 / 72%);
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 76%), rgb(232 221 210 / 43%));
+            -webkit-backdrop-filter: blur(14px) saturate(1.3);
+            backdrop-filter: blur(14px) saturate(1.3);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 72%), 0 10px 28px rgb(56 41 32 / 6%);
+        }
+        .religion-note {
+            padding: 22px;
+            border: 1px solid rgb(255 255 255 / 70%);
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 72%), rgb(220 199 184 / 24%));
+            -webkit-backdrop-filter: blur(15px) saturate(1.3);
+            backdrop-filter: blur(15px) saturate(1.3);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 78%), 0 12px 32px rgb(56 41 32 / 6%);
+        }
+        .religion-list li {
+            margin: 10px 0;
+            padding: 16px 14px;
+            border: 1px solid rgb(255 255 255 / 70%);
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgb(255 255 255 / 66%), rgb(220 199 184 / 18%));
+            -webkit-backdrop-filter: blur(13px) saturate(1.25);
+            backdrop-filter: blur(13px) saturate(1.25);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 75%), 0 8px 22px rgb(56 41 32 / 5%);
+        }
+        .walk-panel { padding: 24px; border: 1px solid rgb(255 255 255 / 78%); border-radius: 8px; background: linear-gradient(145deg, rgb(255 255 255 / 73%), rgb(220 199 184 / 20%)); -webkit-backdrop-filter: blur(17px) saturate(1.3); backdrop-filter: blur(17px) saturate(1.3); box-shadow: inset 0 1px 0 rgb(255 255 255 / 76%), 0 18px 45px rgb(56 41 32 / 7%); }
+        .walk-item { padding: 16px; border: 1px solid rgb(255 255 255 / 70%); border-radius: 8px; background: linear-gradient(135deg, rgb(255 255 255 / 60%), rgb(220 199 184 / 16%)); -webkit-backdrop-filter: blur(12px) saturate(1.25); backdrop-filter: blur(12px) saturate(1.25); box-shadow: inset 0 1px 0 rgb(255 255 255 / 72%); }
+        .footer-inner { position: relative; isolation: isolate; padding: 14px 18px; }
+        .footer-inner::before { content: ""; position: absolute; z-index: 0; inset: 0; border: 1px solid rgb(255 255 255 / 24%); border-radius: 8px; background: linear-gradient(135deg, rgb(255 255 255 / 14%), rgb(255 255 255 / 4%)); -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3); box-shadow: inset 0 1px 0 rgb(255 255 255 / 22%); pointer-events: none; }
+        .footer-inner > * { position: relative; z-index: 1; }
+        footer a { padding: 7px 10px; border: 1px solid rgb(255 255 255 / 28%); border-radius: 999px; background: rgb(255 255 255 / 9%); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+        .wordmark-mark { border-radius: 8px; background: linear-gradient(145deg, rgb(255 255 255 / 62%), rgb(220 199 184 / 18%)); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%); }
+        .main-nav a { padding: 7px 10px; border: 1px solid rgb(255 255 255 / 62%); border-radius: 999px; background: linear-gradient(145deg, rgb(255 255 255 / 60%), rgb(255 255 255 / 18%)); -webkit-backdrop-filter: blur(12px) saturate(1.3); backdrop-filter: blur(12px) saturate(1.3); box-shadow: inset 0 1px 0 rgb(255 255 255 / 76%); }
+        .main-nav a:hover { background: linear-gradient(145deg, rgb(255 255 255 / 85%), rgb(220 199 184 / 30%)); }
+
+        /* Distribucion adaptable de la portada y los paneles decorativos. */
+        @media (max-width: 760px) {
+            .hero-content { padding-left: 18px; padding-right: 18px; }
+            .hero-content::before { inset: 28px 8px 24px -18px; }
+            .section-heading { padding: 18px; }
+            .religion-note { padding: 18px; }
+            .walk-panel { padding: 18px; }
+            .walk-item { padding: 14px; }
+            .intro-inner::before { inset: 8px -10px; }
+            .footer-inner { padding: 14px; }
+        }
+
+        /* Tarjetas de baluartes y ventana con informacion de cada lugar. */
+        .bastion {
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            appearance: none;
+            border: 1px solid var(--line);
+            border-color: var(--line);
+            color: white;
+            background-color: var(--sea);
+            background-image: linear-gradient(0deg, rgb(31 23 18 / 82%), rgb(31 23 18 / 5%) 90%), var(--bastion-card-image);
+            background-position: center;
+            background-size: cover;
+            cursor: pointer;
+            text-align: left;
+            font: inherit;
+        }
+        .bastion::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            inset: 39% 8px 8px;
+            border: 1px solid rgb(255 255 255 / 42%);
+            border-radius: 10px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 25%), rgb(255 255 255 / 9%) 38%, rgb(56 41 32 / 25%));
+            -webkit-backdrop-filter: blur(8px) saturate(1.45);
+            backdrop-filter: blur(8px) saturate(1.45);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), inset 0 -1px 0 rgb(255 255 255 / 10%), 0 8px 24px rgb(20 15 12 / 18%);
+            pointer-events: none;
+        }
+        .bastion:focus-visible { z-index: 1; outline: 3px solid var(--coral); outline-offset: 3px; }
+        .bastion h3, .bastion p { position: relative; z-index: 1; max-width: 100%; color: white; overflow-wrap: anywhere; }
+        .bastion em { color: var(--stone); }
+        .bastion h3 { font-size: 24px; }
+        .bastion p { max-width: 280px; font-size: 12px; }
+        .bastion::after {
+            content: "+";
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            align-self: flex-end;
+            margin-top: 2px;
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgb(255 255 255 / 34%);
+            border-radius: 999px;
+            color: white;
+            background: rgb(56 41 32 / 24%);
+            -webkit-backdrop-filter: blur(10px) saturate(1.4);
+            backdrop-filter: blur(10px) saturate(1.4);
+            font: 500 20px/1 var(--sans);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 36%);
+        }
+        .bastion-dialog {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            max-width: none;
+            height: 100vh;
+            height: 100dvh;
+            max-height: none;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            border: 0;
+            color: white;
+            background: var(--sea);
+            transform-origin: top left;
+        }
+        .bastion-dialog::backdrop { background: rgb(20 15 12 / 88%); }
+        .bastion-dialog::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image: linear-gradient(90deg, rgb(29 22 18 / 90%), rgb(29 22 18 / 56%) 55%, rgb(29 22 18 / 23%)),
+                linear-gradient(0deg, rgb(29 22 18 / 54%), transparent 72%), var(--bastion-image);
+            background-position: center;
+            background-size: cover;
+            transform: scale(1.02);
+        }
+        .bastion-dialog-close {
+            position: fixed;
+            z-index: 2;
+            top: max(18px, env(safe-area-inset-top));
+            right: max(18px, env(safe-area-inset-right));
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgb(255 255 255 / 62%);
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(145deg, rgb(255 255 255 / 25%), rgb(56 41 32 / 42%));
+            -webkit-backdrop-filter: blur(18px) saturate(1.5);
+            backdrop-filter: blur(18px) saturate(1.5);
+            font: 400 30px/1 var(--sans);
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 48%), 0 8px 24px rgb(0 0 0 / 22%);
+        }
+        .bastion-dialog-close:focus-visible { outline: 3px solid var(--stone); outline-offset: 3px; }
+        .bastion-dialog-content {
+            position: relative;
+            z-index: 1;
+            width: min(850px, calc(100% - 48px));
+            min-height: 100%;
+            margin: 0 auto;
+            padding: clamp(100px, 14vh, 150px) 0 58px;
+        }
+        .bastion-dialog-kicker { margin-bottom: 14px; color: var(--stone); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .bastion-dialog-content h2 { max-width: 700px; margin-bottom: 20px; color: white; font-size: 70px; line-height: .98; }
+        .bastion-dialog-intro { max-width: 680px; margin-bottom: 40px; color: rgb(255 255 255 / 88%); font-size: 17px; }
+        .bastion-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 38px; max-width: 800px; }
+        .bastion-detail {
+            padding: 16px;
+            border: 1px solid rgb(255 255 255 / 24%);
+            border-radius: 8px;
+            background: linear-gradient(180deg, rgb(255 255 255 / 12%), rgb(255 255 255 / 2%));
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            box-shadow: none;
+        }
+        .bastion-detail h3 { margin-bottom: 8px; color: var(--stone); font: 400 22px var(--display); overflow-wrap: anywhere; }
+        .bastion-detail p { margin: 0; color: rgb(255 255 255 / 86%); font-size: 13px; overflow-wrap: anywhere; }
+        .bastion-photo-credit { display: inline-block; margin-top: 38px; color: var(--stone); font-size: 11px; text-underline-offset: 4px; }
+        @media (max-width: 760px) {
+            .bastion { min-height: 190px; }
+            .bastion::before { inset: 8px; }
+            .bastion-dialog-content { width: calc(100% - 40px); padding-top: 98px; padding-bottom: max(40px, env(safe-area-inset-bottom)); }
+            .bastion-dialog-content h2 { max-width: 100%; font-size: 52px; overflow-wrap: anywhere; }
+            .bastion-dialog-intro { font-size: 15px; }
+            .bastion-detail-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+        @media (max-width: 400px) {
+            .bastion h3 { font-size: 21px; }
+            .bastion p { font-size: 11px; }
+            .bastion-dialog-content h2 { font-size: 44px; }
+            .bastion-dialog-intro { font-size: 14px; }
+            .bastion-detail h3 { font-size: 20px; }
+            .bastion-detail p { font-size: 12px; }
+        }
+
+        /* Presentacion editorial y ajustes de la galeria. */
+        .site-header {
+            position: absolute;
+            inset: 0 0 auto;
+            z-index: 2;
+            color: white;
+            background: linear-gradient(180deg, rgb(34 25 20 / 34%), transparent);
+            border: 0;
+            box-shadow: none;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+        }
+        .nav-wrap { border-bottom-color: rgb(255 255 255 / 38%); }
+        .wordmark-mark { border-color: rgb(255 255 255 / 78%); color: white; }
+        .main-nav a { color: white; }
+        .hero {
+            min-height: 720px;
+            height: min(960px, 100svh);
+            align-items: center;
+            isolation: isolate;
+        }
+        .hero::after {
+            background: linear-gradient(180deg, rgb(33 24 19 / 28%), rgb(33 24 19 / 20%) 38%, rgb(33 24 19 / 65%)),
+                linear-gradient(90deg, rgb(33 24 19 / 30%), transparent 70%);
+        }
+        .hero-image { object-position: center 52%; transform: scale(1.025); }
+        .hero-content {
+            width: min(1100px, calc(100% - 48px));
+            padding: clamp(115px, 17vh, 170px) 30px 54px;
+            text-align: center;
+        }
+        .hero-content::before {
+            inset: calc(50% + 24px) auto auto 50%;
+            width: min(860px, 100%);
+            height: calc(100% - 30px);
+            transform: translate(-50%, calc(-50% + 24px));
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgb(255 255 255 / 21%), rgb(56 41 32 / 29%));
+        }
+        .hero-content .eyebrow { letter-spacing: 3px; }
+        h1 {
+            max-width: 100%;
+            margin: 0 auto 20px;
+            font-size: clamp(68px, 11vw, 142px);
+            line-height: .92;
+            text-wrap: balance;
+        }
+        .hero-subtitle { margin: 0 auto 28px; font-size: clamp(15px, 1.7vw, 19px); }
+        .intro-band { padding: 18px 0; }
+        .intro-inner { gap: clamp(32px, 7vw, 90px); }
+        .stat b { font-size: clamp(27px, 3.6vw, 42px); }
+        .section { padding: clamp(76px, 10vw, 132px) 0; }
+        .section-inner { width: min(1200px, calc(100% - 64px)); }
+        .section-heading { grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 72px); margin-bottom: 56px; }
+        .section-heading h2 { font-size: clamp(46px, 6.4vw, 82px); }
+        .section-heading > p { font-size: 15px; line-height: 1.8; }
+        .feature { min-height: 300px; padding: clamp(26px, 4vw, 46px); }
+        .feature h3 { font-size: clamp(30px, 3.4vw, 42px); }
+        .subhead { margin-top: 76px; font-size: 32px; }
+        .bastion { min-height: 230px; }
+        .forts { gap: 22px; }
+        .forts > article { min-height: 170px; padding: 26px; }
+        .gallery-heading { margin-top: 78px; }
+        .gallery-heading h3 { font-size: clamp(32px, 4vw, 48px); }
+        .bastion-gallery {
+            grid-template-columns: none;
+            grid-auto-columns: clamp(280px, 34vw, 420px);
+            grid-auto-flow: column;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 4px 3px 20px;
+            scroll-snap-type: x mandatory;
+            overscroll-behavior-x: contain;
+            scrollbar-color: var(--coral) var(--sea-light);
+            scrollbar-width: thin;
+        }
+        .bastion-gallery figure {
+            position: relative;
+            height: clamp(360px, 42vw, 510px);
+            scroll-snap-align: start;
+            background: var(--sea);
+        }
+        .gallery-photo-link { height: 100%; }
+        .gallery-photo-link img {
+            height: 100%;
+            aspect-ratio: auto;
+            transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+        }
+        .bastion-gallery figure:hover img { transform: scale(1.035); }
+        .bastion-gallery figcaption {
+            position: absolute;
+            inset: auto 14px 14px;
+            padding: 18px;
+            border: 1px solid rgb(255 255 255 / 72%);
+            border-radius: 12px;
+            color: var(--ink);
+            background: linear-gradient(145deg, rgb(255 255 255 / 82%), rgb(244 239 232 / 55%));
+            -webkit-backdrop-filter: blur(16px) saturate(1.35);
+            backdrop-filter: blur(16px) saturate(1.35);
+            box-shadow: inset 0 1px 0 rgb(255 255 255 / 78%), 0 10px 30px rgb(24 18 14 / 14%);
+        }
+        .bastion-gallery figcaption strong { font-size: 25px; }
+        .bastion-gallery figcaption span { color: var(--ink); font-size: 12px; }
+        .gallery-credit { color: var(--ink) !important; }
+        @media (max-width: 760px) {
+            .site-header { background: linear-gradient(180deg, rgb(34 25 20 / 40%), transparent); }
+            .nav-wrap { border-bottom-color: rgb(255 255 255 / 38%); }
+            .wordmark-mark { border-color: rgb(255 255 255 / 78%); color: white; }
+            .hero { min-height: 640px; height: 92svh; }
+            .hero-content { width: calc(100% - 34px); padding: 100px 17px 44px; }
+            .hero-content::before { inset: 50% auto auto 50%; width: 100%; height: calc(100% - 20px); transform: translate(-50%, -50%); }
+            h1 { font-size: clamp(60px, 14vw, 88px); }
+            .hero-subtitle { max-width: 420px; }
+            .section-inner { width: min(100% - 36px, 600px); }
+            .section { padding: 72px 0; }
+            .section-heading { grid-template-columns: 1fr; gap: 17px; margin-bottom: 34px; }
+            .section-heading h2 { font-size: clamp(44px, 12vw, 64px); }
+            .feature { min-height: 230px; }
+            .subhead { margin-top: 56px; }
+            .bastion { min-height: 190px; }
+            .forts > article { min-height: auto; }
+            .gallery-heading { display: block; margin-top: 58px; }
+            .gallery-heading p { margin-top: 10px; }
+            .bastion-gallery { grid-template-columns: none; grid-auto-columns: min(84vw, 390px); gap: 14px; }
+            .bastion-gallery figure { height: min(118vw, 480px); }
+            .religion-layout { grid-template-columns: 1fr; gap: 28px; }
+            .religion-note { position: static; }
+            .religion-note h2 { font-size: clamp(46px, 12vw, 64px); }
+            .walk-panel { padding: 24px 18px; }
+            .walk-grid { grid-template-columns: 1fr; gap: 18px; }
+        }
+        @media (max-width: 400px) {
+            .hero { min-height: 590px; }
+            .hero-content .eyebrow { font-size: 9px; letter-spacing: 2px; }
+            h1 { font-size: 58px; }
+            .stats { gap: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-photo-link img { transition: none; }
+        }
+        .wordmark-mark {
+            display: block;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 0;
+            object-fit: contain;
+            background: transparent;
+            box-shadow: none;
+            -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+        }
+        @media (max-width: 760px) {
+            .wordmark-mark { width: 36px; height: 36px; }
+        }
+        .hero-carousel { position: absolute; z-index: auto; inset: 0; overflow: hidden; touch-action: pan-y; }
+        .hero-slides { display: flex; width: 100%; height: 100%; transition: transform .7s cubic-bezier(.22, .61, .36, 1); }
+        .hero-slide { position: relative; flex: 0 0 100%; width: 100%; height: 100%; margin: 0; }
+        .hero-slide img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .hero-slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(45 31 24 / 36%), transparent 76%), linear-gradient(0deg, rgb(45 31 24 / 28%), transparent 58%); }
+        .hero-carousel-control { position: absolute; z-index: 3; top: 50%; display: grid; place-items: center; width: 46px; height: 46px; padding: 0; transform: translateY(-50%); border: 1px solid rgb(255 255 255 / 62%); border-radius: 50%; color: white; background: rgb(56 41 32 / 34%); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); font: 400 27px/1 var(--sans); cursor: pointer; }
+        .hero-carousel-control:hover { background: rgb(56 41 32 / 62%); }
+        .hero-carousel-control:focus-visible, .hero-carousel-dot:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+        .hero-carousel-control--previous { left: 22px; }
+        .hero-carousel-control--next { right: 22px; }
+        .hero-carousel-dots { position: absolute; z-index: 3; bottom: 26px; left: 50%; display: flex; gap: 9px; transform: translateX(-50%); }
+        .hero-carousel-dot { width: 9px; height: 9px; padding: 0; border: 1px solid white; border-radius: 50%; background: rgb(255 255 255 / 42%); cursor: pointer; }
+        .hero-carousel-dot[aria-current="true"] { width: 25px; border-radius: 999px; background: white; }
+        .hero-carousel-control--previous, .hero-carousel-control--next { top: 50%; }
+        .hero-content { z-index: 2; }
+        .hero::after { z-index: 1; pointer-events: none; }
+        @media (max-width: 760px) {
+            .hero-carousel-control { width: 38px; height: 38px; font-size: 23px; }
+            .hero-carousel-control--previous { left: 10px; }
+            .hero-carousel-control--next { right: 10px; }
+            .hero-carousel-dots { bottom: 15px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slides { transition: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado y marca del sitio. -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <a class="wordmark" href="#inicio" aria-label="Campeche, volver al inicio"><img class="wordmark-mark" src="campeche-logo-transparente.png" alt=""><span>CAMPECHE<br>CIUDAD HISTÓRICA</span></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Portada principal con imagen y acceso al recorrido. -->
+        <section class="hero" id="inicio" aria-labelledby="hero-title">
+            <img class="hero-image" src="WhatsApp%20Image%202026-10-14%20at%207.17.02%20AM.jpeg" alt="Iglesia histórica de Campeche" fetchpriority="high">
+            <div class="hero-content">
+                <p class="eyebrow">Costa del Golfo · Patrimonio Mundial UNESCO</p>
+                <h1 id="hero-title">San Francisco<br>de Campeche</h1>
+                <p class="hero-subtitle">La única ciudad amurallada de México: un paseo entre bastiones, fachadas de color y siglos de historia.</p>
+                <a class="hero-link" href="#murallas" data-scroll>Explorar la ciudad <span aria-hidden="true">↓</span></a>
+            </div>
+        </section>
+
+        <!-- Introduccion y datos destacados de Campeche. -->
+        <section class="intro-band" aria-label="Campeche en cifras">
+            <div class="intro-inner">
+                <p>Fundada en <strong>1540</strong> y reconocida por la UNESCO en <strong>1999</strong>, Campeche conserva un Centro Histórico excepcional: calles, plazas y arquitectura que cuentan la historia de una ciudad portuaria fortificada.</p>
+                <div class="stats">
+                    <div class="stat"><b>1540</b><span>Fundación de la ciudad</span></div>
+                    <div class="stat"><b>1999</b><span>Inscripción UNESCO</span></div>
+                    <div class="stat"><b>8</b><span>Baluartes históricos</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Murallas, baluartes y fuertes de la ciudad. -->
+        <section class="section defense" id="murallas">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <div><p class="eyebrow">01 / El sistema defensivo</p><h2>Una ciudad hecha<br>para resistir</h2></div>
+                    <p>Entre los siglos XVII y XVIII, murallas, puertas, baluartes y fuertes protegieron el puerto de los ataques de piratas y corsarios. Hoy, sus recintos forman el recorrido histórico más emblemático de Campeche.</p>
+                </div>
+                <div class="defense-grid">
+                    <article class="feature">
+                        <span class="number">A — ACCESOS</span>
+                        <h3>Dos puertas icónicas</h3>
+                        <p>La Puerta de Mar recibía a quienes llegaban desde el puerto; la Puerta de Tierra conectaba con el camino terrestre. Esta última es escenario del espectáculo nocturno de luz y sonido <em>El Lugar del Sol</em>.</p>
+                        <span class="tag">El trazado original tuvo cuatro accesos</span>
+                    </article>
+                    <article class="feature">
+                        <span class="number">B — RECINTO AMURALLADO</span>
+                        <h3>Ocho baluartes, un pentágono</h3>
+                        <p>El circuito defensivo conserva alrededor de 500 metros de muralla. Varios baluartes albergan museos, jardines y miradores que permiten descubrir la historia desde dentro.</p>
+                        <span class="tag">Arquitectura militar caribeña</span>
+                    </article>
+                </div>
+
+                <h3 class="subhead">Los baluartes</h3>
+                <div class="bastion-grid">
+                    <button type="button" class="bastion" data-bastion="san-carlos" aria-haspopup="dialog" aria-expanded="false"><h3>San Carlos</h3><p><em>1668 · El más antiguo.</em> Alberga el Museo de la Ciudad.</p></button>
+                    <button type="button" class="bastion" data-bastion="la-soledad" aria-haspopup="dialog" aria-expanded="false"><h3>La Soledad</h3><p><em>1690 · El de mayor tamaño.</em> Museo de Arquitectura Maya, frente al mar.</p></button>
+                    <button type="button" class="bastion" data-bastion="santiago" aria-haspopup="dialog" aria-expanded="false"><h3>Santiago</h3><p>Recinto del Jardín Botánico Xmuch'haltun.</p></button>
+                    <button type="button" class="bastion" data-bastion="san-francisco" aria-haspopup="dialog" aria-expanded="false"><h3>San Francisco</h3><p>Parte del conjunto defensivo del Centro Histórico.</p></button>
+                    <button type="button" class="bastion" data-bastion="san-juan" aria-haspopup="dialog" aria-expanded="false"><h3>San Juan</h3><p>Uno de los baluartes que completaban el perímetro amurallado.</p></button>
+                    <button type="button" class="bastion" data-bastion="santa-rosa" aria-haspopup="dialog" aria-expanded="false"><h3>Santa Rosa</h3><p>Testimonio de la arquitectura militar de la ciudad.</p></button>
+                    <button type="button" class="bastion" data-bastion="san-pedro" aria-haspopup="dialog" aria-expanded="false"><h3>San Pedro</h3><p>Integrante del sistema de ocho baluartes históricos.</p></button>
+                    <button type="button" class="bastion" data-bastion="san-jose" aria-haspopup="dialog" aria-expanded="false"><h3>San José</h3><p>Parte del trazado defensivo que protegía el antiguo puerto.</p></button>
+                </div>
+
+                <h3 class="subhead">Los fuertes extramuros · refuerzo de 1774</h3>
+                <div class="forts">
+                    <article><h3>Fuerte de San Miguel</h3><p>Sobre un cerro, a unos 3 km del centro. Su Museo de Arqueología Maya resguarda piezas emblemáticas, entre ellas la máscara de jade de Calakmul.</p></article>
+                    <article><h3>Fuerte de San José el Alto</h3><p>Hoy Museo de Barcos y Armas; su ubicación elevada ofrece una vista panorámica de la ciudad y la costa.</p></article>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Lista de templos y patrimonio religioso. -->
+        <section class="section religion" id="templos">
+            <div class="section-inner religion-layout">
+                <div class="religion-note">
+                    <p class="eyebrow">02 / Arquitectura religiosa</p>
+                    <h2>Ocho templos,<br>muchas historias</h2>
+                    <p>El área histórica reúne inmuebles religiosos de los siglos XVI al XVIII. De la primera iglesia franciscana a la catedral, cada edificio conserva una huella distinta de la vida campechana.</p>
+                </div>
+                <ol class="religion-list">
+                    <li><div><strong>Iglesia de San Francisco</strong><span>1546 · Considerada el monumento religioso más antiguo de la ciudad.</span></div></li>
+                    <li><div><strong>Templo del Dulce Nombre de Jesús</strong><span>1560 · Una de las primeras construcciones religiosas de Campeche.</span></div></li>
+                    <li><div><strong>Santuario del Cristo Negro de San Román</strong><span>1563 · El Cristo Negro es una figura muy querida por los campechanos y los marinos.</span></div></li>
+                    <li><div><strong>Iglesia de San Roque o San Francisquito</strong><span>1634 · Templo histórico del barrio de San Francisco.</span></div></li>
+                    <li><div><strong>Santuario de Nuestra Señora de Guadalupe</strong><span>1660 · Devoción y arquitectura colonial en un mismo recinto.</span></div></li>
+                    <li><div><strong>Templo de San Juan de Dios</strong><span>1675 · Vinculado al antiguo hospital de la orden de San Juan de Dios.</span></div></li>
+                    <li><div><strong>Catedral de Nuestra Señora de la Purísima Concepción</strong><span>1705 · En la Plaza de la Independencia, corazón del Centro Histórico.</span></div></li>
+                    <li><div><strong>Ex Templo de San José</strong><span>1716 · Destaca por su fachada barroca; hoy funciona como espacio cultural.</span></div></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Lugares recomendados para recorrer caminando. -->
+        <section class="walk" id="recorrido">
+            <div class="section-inner">
+                <div class="walk-panel">
+                    <div class="section-heading">
+                        <div><p class="eyebrow">03 / Patrimonio más allá de la muralla</p><h2>Otros sitios que vale la pena conocer</h2></div>
+                        <p>Campeche no se resume en sus murallas: también encierra paisajes costeros, pueblos de arquitectura histórica, haciendas y vestigios mayas que amplían la historia del estado.</p>
+                    </div>
+                    <div class="walk-grid">
+                        <article class="walk-item"><h3>Malecón de Campeche</h3><p>Es el paseo marítimo más emblemático de la ciudad; combina vista al Golfo, atardeceres, puestos de comida y una dimensión costera muy presente en la vida local.</p></article>
+                        <article class="walk-item"><h3>Hacienda de Uayamón</h3><p>Una de las grandes haciendas históricas del estado, con arquitectura y paisajes que permiten entender la riqueza económica y social de Campeche en la época colonial.</p></article>
+                        <article class="walk-item"><h3>Palizada</h3><p>Pueblo con valor patrimonial, donde la arquitectura neoclásica convive con influencias mayas, creando un conjunto muy singular dentro del paisaje campechano.</p></article>
+                        <article class="walk-item"><h3>Isla Aguada</h3><p>Con su antiguo faro y su historia costera, es un punto clave del litoral campechano, además de un lugar ideal para disfrutar de la tranquilidad del mar.</p></article>
+                        <article class="walk-item"><h3>Edzná</h3><p>Uno de los grandes sitios arqueológicos mayas del estado, famoso por su pirámide de cinco niveles y por la monumentalidad de su conjunto urbano.</p></article>
+                        <article class="walk-item"><h3>Calakmul</h3><p>La ciudad maya clásica más importante de la región; su extensión, su complejidad y su valor arqueológico la convierten en un destino esencial para recorrer la historia prehispánica.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dialogo reutilizable: JavaScript inserta aqui los datos del baluarte elegido. -->
+    <dialog class="bastion-dialog" aria-labelledby="bastion-dialog-title">
+        <button class="bastion-dialog-close" type="button" aria-label="Cerrar ficha">×</button>
+        <div class="bastion-dialog-content">
+            <p class="bastion-dialog-kicker"></p>
+            <h2 id="bastion-dialog-title"></h2>
+            <p class="bastion-dialog-intro"></p>
+            <div class="bastion-detail-grid"></div>
+            <a class="bastion-photo-credit" target="_blank" rel="noreferrer"></a>
+        </div>
+    </dialog>
+    <!-- Pie de pagina con atribucion de la fotografia principal. -->
+    <footer>
+        <div class="footer-inner">
+            
+            
+        </div>
+    </footer>
+    <script src="jess.js" defer></script>
+</body>
+</html>
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -778,7 +1565,7 @@
     <!-- Pie de pagina con atribucion de la fotografia principal. -->
     <footer>
         <div class="footer-inner">
-            <p>San Francisco de Campeche · Patrimonio Mundial desde 1999</p>
+            
             
         </div>
     </footer>
